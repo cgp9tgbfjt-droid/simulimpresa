@@ -20,7 +20,7 @@ Tutti i testi visibili sono in italiano.
 - `src/data/catalog.ts` — logica pura di ricerca, filtro e ordinamento (testata in `src/__tests__`).
 - `src/lib/validation.ts` — validazione di logo (tipo, dimensione), quantità e modulo contatti.
 - `src/lib/contact.ts` — invio del modulo tramite `VITE_CONTACT_ENDPOINT`. Non simula mai un invio riuscito.
-- `src/components/` — presentazione: Nav, Hero, Explorer, Scenes, Customizer (lazy), Approach, Contact, ProductVisual, ErrorBoundary.
+- `src/components/` — presentazione: Nav, Hero, Explorer, Scenes, Customizer, Approach, Contact, ProductVisual, ErrorBoundary.
 - `src/styles/tokens.css` — design token (colori, tipografia, spaziatura, ombre, durate, easing, larghezze, z-index). Usare sempre i token, non valori letterali.
 - `src/styles/global.css`, `src/styles/components.css` — stili globali e di componente.
 

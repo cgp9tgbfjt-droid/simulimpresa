@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Explorer } from './components/Explorer';
@@ -7,11 +7,8 @@ import { Contact } from './components/Contact';
 import { Scenes } from './components/Scenes';
 import { ProductVisual } from './components/ProductVisual';
 import { COLLECTIONS, PRODUCT_COUNT } from './data/products';
-import type { InquiryDraft } from './components/Customizer';
+import { Customizer, type InquiryDraft } from './components/Customizer';
 import { ErrorBoundary } from './components/ErrorBoundary';
-
-// Il configuratore è caricato in modo differito per ridurre il bundle iniziale.
-const Customizer = lazy(() => import('./components/Customizer').then((m) => ({ default: m.Customizer })));
 
 export default function App() {
   const [productId, setProductId] = useState<string | null>(null);
@@ -82,9 +79,7 @@ export default function App() {
               non è una prova di produzione.
             </p>
             <ErrorBoundary fallback={<p className="error">Il configuratore non è disponibile. Usa il modulo contatti qui sotto.</p>}>
-              <Suspense fallback={<p className="muted">Caricamento configuratore…</p>}>
-                <Customizer productId={productId} onProductChange={setProductId} onPrepareInquiry={onPrepareInquiry} />
-              </Suspense>
+              <Customizer productId={productId} onProductChange={setProductId} onPrepareInquiry={onPrepareInquiry} />
             </ErrorBoundary>
           </div>
         </section>
