@@ -28,6 +28,8 @@ jobs:
       - name: Build (base path per GitHub Pages)
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
+          # Facoltativo: URL pubblico del backend del modulo contatti (variabile del repository, non un segreto).
+          VITE_CONTACT_ENDPOINT: ${{ vars.VITE_CONTACT_ENDPOINT }}
         run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

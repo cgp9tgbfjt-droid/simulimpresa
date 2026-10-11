@@ -7,6 +7,7 @@ Tutti i testi visibili sono in italiano.
 - Hosting: GitHub Pages, pubblicato dal workflow `.github/workflows/deploy-pages.yml` a ogni push su `main`.
 - Il build imposta `BASE_PATH=/<nome-repo>/` (variabile letta da `vite.config.ts`). In locale resta `/`.
 - Il workflow esegue test e build prima del deploy.
+- Modulo contatti: impostare la variabile del repository `VITE_CONTACT_ENDPOINT` (Settings → Secrets and variables → Actions → Variables) con l'URL del backend. Se assente, il modulo dichiara che la richiesta non è stata inviata.
 
 ## Comandi
 - `npm install` — dipendenze
