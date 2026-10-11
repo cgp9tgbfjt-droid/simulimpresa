@@ -15,11 +15,17 @@ export default function App() {
   const [draft, setDraft] = useState<InquiryDraft | null>(null);
 
   // Il browser tenta lo scroll al frammento prima che React abbia montato le sezioni:
-  // lo ripetiamo una volta dopo il mount, così i link diretti (#contatti, ecc.) funzionano.
+  // allineiamo di nuovo al mount e al load, in modo istantaneo, così i link diretti
+  // (#contatti, ecc.) atterrano sulla sezione corretta.
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1));
     if (!id) return;
-    document.getElementById(id)?.scrollIntoView({ block: 'start' });
+    const align = () => {
+      document.getElementById(id)?.scrollIntoView({ block: 'start', behavior: 'instant' as ScrollBehavior });
+    };
+    align();
+    window.addEventListener('load', align, { once: true });
+    return () => window.removeEventListener('load', align);
   }, []);
 
   const goToCustomizer = (id: string) => {
