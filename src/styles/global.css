@@ -13,6 +13,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img, svg, video { max-width: 100%; display: block; }
+[id] { scroll-margin-top: 84px; }
 h1, h2, h3 { font-weight: 650; margin: 0; }
 h1 { font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); }
 h2 { font-size: var(--fs-h2); line-height: 1; letter-spacing: var(--tracking-display); }
