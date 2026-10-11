@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Explorer } from './components/Explorer';
@@ -16,6 +16,14 @@ const Customizer = lazy(() => import('./components/Customizer').then((m) => ({ d
 export default function App() {
   const [productId, setProductId] = useState<string | null>(null);
   const [draft, setDraft] = useState<InquiryDraft | null>(null);
+
+  // Il browser tenta lo scroll al frammento prima che React abbia montato le sezioni:
+  // lo ripetiamo una volta dopo il mount, così i link diretti (#contatti, ecc.) funzionano.
+  useEffect(() => {
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    document.getElementById(id)?.scrollIntoView({ block: 'start' });
+  }, []);
 
   const goToCustomizer = (id: string) => {
     setProductId(id);
