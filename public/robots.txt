@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cgp9tgbfjt-droid.github.io/simulimpresa/sitemap.xml
